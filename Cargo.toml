@@ -1,0 +1,30 @@
+[package]
+name = "nova-noyau"
+version = "0.1.0"
+edition = "2021"
+description = "Le noyau NOVA : cerveau borné, contrat d'intent, chaîne d'écriture vérifiée, champ qui mange tout, accès Cloudflare, quota."
+license = "MIT"
+repository = "https://github.com/LaCeriseDev/nova-noyau"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+anyhow = "1"
+thiserror = "2"
+tracing = "0.1"
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls"] }
+rusqlite = { version = "0.31", features = ["bundled"] }
+jsonwebtoken = "9"
+hmac = "0.12"
+sha2 = "0.10"
+hex = "0.4"
+rand = "0.8"
+time = { version = "0.3", features = ["macros", "local-offset", "formatting"] }
+axum = { version = "0.7", optional = true }
+
+[features]
+default = ["axum"]
+axum = ["dep:axum"]
+
+[dev-dependencies]
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
