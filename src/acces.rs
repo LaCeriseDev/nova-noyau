@@ -157,7 +157,7 @@ impl Acces {
     /// Identifie l'appelant à partir des en-têtes bruts (`cf-access-jwt-assertion`, et
     /// `x-dev-email` en mode dev). Le rôle renvoyé est le rôle INITIAL de l'allowlist ; si
     /// le projet garde les rôles en base, c'est à lui de le relire (voir `touch_user` chez Mia).
-    pub async fn identifier(&self, entetes: &dyn Fn(&str) -> Option<String>, allow: &Allowlist) -> Result<Identite, Refus> {
+    pub async fn identifier(&self, entetes: &(dyn Fn(&str) -> Option<String> + Sync), allow: &Allowlist) -> Result<Identite, Refus> {
         let email = if self.dev_mode {
             entetes("x-dev-email").unwrap_or_else(|| allow.proprietaire.clone()).trim().to_lowercase()
         } else {

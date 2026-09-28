@@ -1,6 +1,6 @@
 [package]
 name = "nova-noyau"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "Le noyau NOVA : cerveau borné, contrat d'intent, chaîne d'écriture vérifiée, champ qui mange tout, accès Cloudflare, quota."
 license = "MIT"
